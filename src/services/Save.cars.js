@@ -27,7 +27,7 @@ const dellCars = (id) => {
 }
 
 const changeCars = (id) => {
-    return fetch('http://195.72.146.25/api/v1/cars' + id, {
+    return fetch('http://195.72.146.25/api/v1/cars/' + id, {
         method: 'PATCH',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',

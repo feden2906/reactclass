@@ -8,6 +8,7 @@ export default function Car({item, setFormState}) {
     }
 
     const edit = () => {
+        console.log(item)
         setFormState(item)
     }
 

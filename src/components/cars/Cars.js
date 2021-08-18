@@ -1,4 +1,4 @@
-import {changeCars, getCars, saveCars} from "../../services/Save.cars";
+import {changeCars, dellCars, getCars, saveCars} from "../../services/Save.cars";
 import {useEffect, useState} from "react";
 import Car from "../car/Car";
 
@@ -6,6 +6,7 @@ export default function Cars() {
 
     let [formState, setFormState] = useState({model: '', price: '', year: ''})
     let [cars, setCars] = useState([]);
+
 
         useEffect(() => {
         getCars().then(value => setCars(value))
@@ -18,12 +19,15 @@ export default function Cars() {
 
     let save = (e) => {
         e.preventDefault();
+
         saveCars(formState);
     }
 
     const mas = ()=>{
         console.log(formState);
-    changeCars(formState);
+        dellCars(formState.id)
+    changeCars(formState.id);
+    console.log(formState.id)
     }
 
 
