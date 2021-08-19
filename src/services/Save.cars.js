@@ -1,39 +1,38 @@
+const basicConfig = (url, obj = {}) => {
+  return fetch('http://195.72.146.25/api/v1/cars' + url, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    ...obj
+  })
+}
+
 const saveCars = (car) => {
-    return fetch('http://195.72.146.25/api/v1/cars', {
-        method: 'POST',
-        body: JSON.stringify(car),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((response) => response.json())
+  return basicConfig('', {
+    method: 'POST',
+    body: JSON.stringify(car)
+  })
+      .then(response => response.json())
 }
 
 const getCars = () => {
-    return fetch('http://195.72.146.25/api/v1/cars', {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((response) => response.json())
+  return basicConfig('')
+      .then(response => response.json())
 }
 
 const dellCars = (id) => {
-    return fetch('http://195.72.146.25/api/v1/cars/' + id, {
-        method: 'DELETE'
-    })
-        .then()
+  return basicConfig('/' + id, {
+    method: 'DELETE'
+  })
 }
 
-const changeCars = (id) => {
-    return fetch('http://195.72.146.25/api/v1/cars/' + id, {
-        method: 'PATCH',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-        .then((response) => response.json())
+const changeCars = (obj) => {
+  return basicConfig('/' + obj.id, {
+    method: 'PATCH',
+    body: JSON.stringify(obj),
+  })
+      .then(response => response.json())
 }
 
-export {saveCars, getCars, dellCars,changeCars};
+export { saveCars, getCars, dellCars, changeCars };

@@ -1,20 +1,11 @@
-
-import {dellCars} from "../../services/Save.cars";
-
-export default function Car({item, setFormState}) {
+export default function Car({item, setFormState, waste}) {
 
     const chose = (e) => {
         e.preventDefault();
     }
 
     const edit = () => {
-        console.log(item)
         setFormState(item)
-    }
-
-    const waste = () => {
-    dellCars(item.id);
-
     }
 
     return (
@@ -22,8 +13,7 @@ export default function Car({item, setFormState}) {
             <form onSubmit={chose}>
                 <h3> {item.model} - {item.price} - {item.year} </h3>
                 <button onClick={edit}>Edit</button>
-                <button onClick={waste} >Delete</button>
-
+                <button onClick={() => waste(item.id)} >Delete</button>
             </form>
         </div>
     );
